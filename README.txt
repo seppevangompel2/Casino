@@ -16,7 +16,13 @@ Welke game wil je spelen?
 4: Roulette
 5: Black Jack
 ----------------------------------------
-input: 
+input:
+
+Vraag?
+---------------------------------------- (40x -)
+Antwoord opties
+----------------------------------------
+Antwoord:
 
 Rollen:
 
