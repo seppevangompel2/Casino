@@ -68,7 +68,3 @@ speler1=speler(0,"N")
 
 #start game
 speler1.hub()
-
-#eventuele instanties
-speler1.hub()
-
