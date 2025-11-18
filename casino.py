@@ -1,4 +1,4 @@
-class speler:
+class Speler:
     def __init__(self,spel,teruggaan, credits = 500):
         self.credits = credits
         self.spel = spel
@@ -17,55 +17,56 @@ class speler:
         print("----------------------------------------")
         self.spel=(int(input("input: ")))
         if self.spel == 1:
-            self.Slotmachine()
+            self.slotmachine()
         elif self.spel==2:
-            self.Hoger_Lager()
+            self.hoger_lager()
         elif self.spel==3:
-            self.Paardenrace()
+            self.paardenrace()
         elif self.spel==4:
-            self.Roulette()
+            self.roulette()
         elif self.spel==5:
-            self.Black_Jack()
-    def Slotmachine(self):
+            self.black_jack()
+    def slotmachine(self):
         #jouw code
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.Slotmachine()
-    def Hoger_Lager(self):
+            self.slotmachine()
+    def hoger_lager(self):
         #jouw code
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.Hoger_Lager()
-    def Paardenrace(self):
+            self.hoger_lager()
+    def paardenrace(self):
         #jouw code
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.Paardenrace()
-    def Roulette(self):
+            self.paardenrace()
+    def roulette(self):
         #jouw code
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.Roulette()
-    def Black_Jack(self):
+            self.roulette()
+    def black_jack(self):
         #jouw code
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.Black_Jack()
+            self.black_jack()
 #eventuele andere klassen
 
 #eventuele instanties
-speler1=speler(0,"N")
+speler1=Speler(0,"N")
 
 #start game
 speler1.hub()
+
 
