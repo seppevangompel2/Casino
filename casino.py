@@ -4,7 +4,7 @@ class speler:
         self.spel = spel
         self.teruggaan = teruggaan
     def hub(self):
-        print(self.credits)
+        print("credits", self.credits)
         self.teruggaan = "nee"
         self.spel=0
         print("Welke game wil je spelen?")
@@ -68,3 +68,4 @@ speler1=speler(0,"N")
 
 #start game
 speler1.hub()
+
