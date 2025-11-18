@@ -33,13 +33,14 @@ class Speler:
             self.hub()
         elif self.teruggaan == "Y":
             self.slotmachine()
-    def hoger_lager(self):
+        def Hoger_Lager(self):
         #jouw code
+        Hoger_Lager.start_game(self)
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.hoger_lager()
+            self.Hoger_Lager()
     def paardenrace(self):
         #jouw code
         self.teruggaan = (input("wil je verder spelen? "))
@@ -62,11 +63,41 @@ class Speler:
         elif self.teruggaan == "Y":
             self.black_jack()
 #eventuele andere klassen
+class Hoger_Lager:
+    def __init__(self,inzet,kaart,kaart2):
+        self.inzet=inzet
+        self.kaart = kaart
+        self.kaart2=kaart2
+    def start_game(self,player):
+        self.inzet=int(input("wat is jouw inzet? "))
+        player.credits -=self.inzet
+        self.randomizer()
+        self.keuze = input("kies hoger (H) of lager (L). ")
+        self.randomizer2()
+        if self.keuze == "L":
+            if self.kaart2 <= self.kaart:
+                player.credits += self.inzet*2
+                print("je verdient ", self.inzet, "credits")
+        if self.keuze == "H":
+            if self.kaart2 >= self.kaart:
+                player.credits += self.inzet*2
+                print("je verdient ", self.inzet, "credits")
+    def randomizer2(self):
+        kaartnummers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        self.kaart2 = random.choice(kaartnummers)
+        print(self.kaart2)
+    def randomizer(self):
+        kaartnummers = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+        self.kaart = random.choice(kaartnummers)
+        print (self.kaart)
+
 
 #eventuele instanties
 speler1=Speler(0,"N")
+Hoger_Lager=Hoger_Lager(0,0,0)
 
 #start game
 speler1.hub()
+
 
 
