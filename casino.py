@@ -1,72 +1,29 @@
-class Speler:
-    def __init__(self,spel,teruggaan, credits = 500):
-        self.credits = credits
-        self.spel = spel
-        self.teruggaan = teruggaan
-    def hub(self):
-        print("credits", self.credits)
-        self.teruggaan = "nee"
-        self.spel=0
-        print("Welke game wil je spelen?")
-        print("----------------------------------------")
-        print("1: Slotmachine")
-        print("2: Hoger Lager")
-        print("3: Paardenrace")
-        print("4: Roulette")
-        print("5: Black Jack")
-        print("----------------------------------------")
-        self.spel=(int(input("input: ")))
-        if self.spel == 1:
-            self.slotmachine()
-        elif self.spel==2:
-            self.hoger_lager()
-        elif self.spel==3:
-            self.paardenrace()
-        elif self.spel==4:
-            self.roulette()
-        elif self.spel==5:
-            self.black_jack()
-    def slotmachine(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
-        if self.teruggaan == "N":
-            self.hub()
-        elif self.teruggaan == "Y":
-            self.slotmachine()
-    def hoger_lager(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
-        if self.teruggaan == "N":
-            self.hub()
-        elif self.teruggaan == "Y":
-            self.hoger_lager()
-    def paardenrace(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
-        if self.teruggaan == "N":
-            self.hub()
-        elif self.teruggaan == "Y":
-            self.paardenrace()
-    def roulette(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
-        if self.teruggaan == "N":
-            self.hub()
-        elif self.teruggaan == "Y":
-            self.roulette()
-    def black_jack(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
-        if self.teruggaan == "N":
-            self.hub()
-        elif self.teruggaan == "Y":
-            self.black_jack()
-#eventuele andere klassen
+#info from geeksforgeeks.org
+import random
 
-#eventuele instanties
-speler1=Speler(0,"N")
+class Card:
+    def __init__(self, card, category):
+        self.card = card
+        self.category = category
 
-#start game
-speler1.hub()
+    def value(self):
+        if self.card in ['Jack', 'Queen', 'King']:
+            return 10
+        elif self.card == 'Ace':
+            return 11
+        else:
+            return int(self.card)
 
+    def __repr__(self):
+        return f"{self.card} of {self.category}"
 
+class Deck:
+    card_categories = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+    cards_list = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
+
+    def __init__(self):
+        self.cards = [Card(card, category) for category in self.card_categories for card in self.cards_list]
+        random.shuffle(self.cards)
+
+    def pop(self):
+        return self.cards.pop()
