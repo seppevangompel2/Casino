@@ -33,7 +33,7 @@ class Speler:
             self.hub()
         elif self.teruggaan == "Y":
             self.slotmachine()
-        def Hoger_Lager(self):
+    def Hoger_Lager(self):
         #jouw code
         Hoger_Lager.start_game(self)
         self.teruggaan = (input("wil je verder spelen? "))
@@ -98,6 +98,7 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 
 #start game
 speler1.hub()
+
 
 
 
