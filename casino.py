@@ -1,3 +1,4 @@
+import random
 class Speler:
     def __init__(self,spel,teruggaan, credits = 500):
         self.credits = credits
@@ -98,6 +99,7 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 
 #start game
 speler1.hub()
+
 
 
 
