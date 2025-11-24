@@ -1,6 +1,4 @@
 import random
-
-import random
 class Speler:
     def __init__(self,spel,teruggaan, credits = 500):
         self.credits = credits
