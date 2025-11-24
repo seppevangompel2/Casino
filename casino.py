@@ -17,7 +17,7 @@ class Speler:
         print("5: Black Jack")
         print("----------------------------------------")
         self.spel=(int(input("input: ")))
-        while (self.spel != 1) and (self.spel != 2)and (self.spel != 3)and (self.spel != 4)and (self.spel != 5):
+        while (self.spel != 1) and (self.spel != 2) and (self.spel != 3) and (self.spel != 4) and (self.spel != 5):
             print("geen mogelijke input, probeer opnieuw.")
             self.spel = (int(input("input: ")))
         if self.spel == 1:
@@ -37,17 +37,21 @@ class Speler:
             self.hub()
         elif self.teruggaan == "Y":
             self.slotmachine()
-    def Hoger_Lager(self):
+    def hoger_lager(self):
         #jouw code
         Hoger_Lager.start_game(self)
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.Hoger_Lager()
+            self.hoger_lager()
     def paardenrace(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
+        print("typ uw paardnummers waarop je credits wilt zetten")
+        inputs = input().split()
+        gekozen_paarden = [int(x) for x in inputs]
+        inzet = int(input("hoeveel wil je inzetten?"))
+        race1.run_race(gekozen_paarden, inzet, self)
+        self.teruggaan = input("wil je verder spelen? ")
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
@@ -94,17 +98,35 @@ class Hoger_Lager:
         kaartnummers = [1,2,3,4,5,6,7,8,9,10,11,12,13]
         self.kaart = random.choice(kaartnummers)
         print (self.kaart)
+class Paardenrace:
+    def __init__(self):
+        self.winnende_paard = None
+        self.tal_paarden = 12
 
+    def run_race(self, gekozen_paarden, inzet_bedrag, speler):
+        if inzet_bedrag > speler.credits:
+            print("je hebt niet genoeg credits")
+            return
+
+        speler.credits -= inzet_bedrag
+        self.winnende_paard = random.randint(1, self.tal_paarden)
+        print("winnend paard:", self.winnende_paard)
+
+        if self.winnende_paard in gekozen_paarden:
+            print("je wint")
+            winst = (self.tal_paarden * inzet_bedrag) // len(gekozen_paarden)
+            speler.credits += winst
+        else:
+            print("je verliest")
+
+        print("nieuwe credits:", speler.credits)
 
 #eventuele instanties
 speler1=Speler(0,"N")
 Hoger_Lager=Hoger_Lager(0,0,0)
-
+race1 = Paardenrace()
 #start game
 speler1.hub()
-
-
-
 
 
 
