@@ -55,6 +55,16 @@ Paardenrace:
 
 Hogerlager:
 
+Speler begint het spel.
+Het spel vraagt hoeveel geld de speler wilt inzetten.
+Het geld wordt van het credit aantal afgehaald
+Spel geeft de speler een random getal tussen 1 en 13 (dertien kaarten). 
+De speler kiest tussen hoger of lager gebaseerd op het gegeven getal
+Als de speler juist raad wordt er tien procent van de huidige inzet toegevoegd aan de inzet
+Als de speler niet juist raad, wordt het spel automatisch afgesloten
+Bij geval van juist raden, dan krijgt de speler een nieuw getal van het spel en begint de gameloop terug van nul.
+Als de speler wilt stoppen, dan wordt de volledige inzet toegevoegd bij het aantal spelercredits
+
 
 Roulette:
 software casino stappen roulette:
