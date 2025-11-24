@@ -31,8 +31,26 @@ class Speler:
         elif self.spel==5:
             self.black_jack()
     def slotmachine(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
+        slot1 = Slotmachine(self.credits)
+        stop = 0
+        while stop == 0 and slot1.credits > 0:
+            print("Roll?")
+            print("----------------------------------------")
+            print("Y: ja")
+            print("N: nee")
+            print("----------------------------------------")
+            answer = input("Antwoord: ")
+            if answer == "Y":
+                slot1.roll()
+            elif answer == "E" or answer == "N":
+                self.credits = slot1.stop()
+                stop = 1
+        print("Wil je verder spelen?")
+        print("----------------------------------------")
+        print("Y: ja")
+        print("N: nee")
+        print("----------------------------------------")
+        self.teruggaan = (input("Antwoord: "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
@@ -71,6 +89,45 @@ class Speler:
         elif self.teruggaan == "Y":
             self.black_jack()
 #eventuele andere klassen
+class Slotmachine:
+    def __init__(self, credits):
+        self.credits = credits
+    def roll(self):
+        result = random.randint(111,999)
+        last_digit = result % 10
+        second_last_digit = (result // 10) % 10
+        if (result % 111) == 0:
+            if result == 777:
+                self.credits += 500
+                print("----------------------------------------")
+                print(f"Rolled:{result}")
+                print("Jackpot! +200C")
+                print(f"Credits: {self.credits}")
+                print("----------------------------------------")
+            else:
+                self.credits += 100
+                print("----------------------------------------")
+                print(f"Rolled:{result}")
+                print("+100C")
+                print(f"Credits: {self.credits}")
+                print("----------------------------------------")
+        elif last_digit == second_last_digit:
+            self.credits += 40
+            print("----------------------------------------")
+            print(f"Rolled:{result}")
+            print("+40C")
+            print(f"Credits: {self.credits}")
+            print("----------------------------------------")
+
+        else:
+            self.credits -= 10
+            print("----------------------------------------")
+            print(f"Rolled:{result}")
+            print("-10C")
+            print(f"Credits: {self.credits}")
+            print("----------------------------------------")
+    def stop(self):
+        return self.credits
 class Hoger_Lager:
     def __init__(self,inzet,kaart,kaart2):
         self.inzet=inzet
