@@ -30,6 +30,16 @@ Niels: Hub, Hoger Lager
 
 documentaties:
 
+hub:
+
+de speler start het spel
+het spel vraagt welke minigame je wilt spelen
+als de speler heeft gekozen wordt de correspoderende method aangeroepen
+dan wordt de code in die methode uitgevoerd
+en als dat is afgelopen, vraagt de methode of je verder wilt spelen of teruggaan
+als op verder spelen wordt gedrukt, dan wordt de methode opnieuw aangeroepen
+anders wordt de hub terug aangeroepen
+
 slotmachine:
 
 uitleg:
