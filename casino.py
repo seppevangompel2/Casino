@@ -1,4 +1,4 @@
-import random
+class Speler:import random
 class Speler:
     def __init__(self,spel,teruggaan, credits = 500):
         self.credits = credits
@@ -75,7 +75,58 @@ class Speler:
         elif self.teruggaan == "Y":
             self.paardenrace()
     def roulette(self):
-        #jouw code
+    #jouw code
+        import random
+        print("\n--- Roulette ---")
+        print(f"Credits: {self.credits}")
+        inzet = int(input("Wat is je inzet? "))
+        if inzet > self.credits:
+            print("Niet genoeg credits! Terug naar hub.")
+            self.hub()
+            return
+        self.credits -= inzet
+        print("Je kan inzetten op: 1=1 getal, 2=2 getallen, 3=3 getallen, 12=dozijn, even, oneven")
+        keuze = input("Wat kies je? ").lower()
+        if keuze == "1":
+            gekozen = [int(input("Welk getal (0-36)? "))]
+        elif keuze == "2":
+            gekozen = [int(input("Getal 1: ")), int(input("Getal 2: "))]
+        elif keuze == "3":
+            gekozen = [int(input(f"Getal {i + 1}: ")) for i in range(3)]
+        elif keuze == "12":
+            keuze2 = input("Kies dozijn 1 (1-12), 2 (13-24), 3 (25-36): ")
+            if keuze2 == "1":
+                gekozen = list(range(1, 13))
+            elif keuze2 == "2":
+                gekozen = list(range(13, 25))
+            elif keuze2 == "3":
+                gekozen = list(range(25, 37))
+            else:
+                print("Ongeldige keuze. Terug naar hub.")
+                self.hub()
+                return
+        elif keuze == "even":
+            gekozen = [i for i in range(1, 37) if i % 2 == 0]
+        elif keuze == "oneven":
+            gekozen = [i for i in range(1, 37) if i % 2 == 1]
+        else:
+            print("Ongeldige keuze. Terug naar hub.")
+            self.hub()
+            return
+        resultaat = random.randint(0, 36)
+        print(f"Het balletje valt op: {resultaat}")
+        if resultaat in gekozen:
+            winst = inzet * 2
+            self.credits += winst
+            print(f"Je hebt gewonnen {winst} credits!")
+        else:
+            print(f"Je hebt verloren {inzet} credits!")
+        print(f"Credits nu: {self.credits}")
+        verder = input("Verder spelen? (Y/N): ")
+        if verder.upper() == "Y":
+            self.roulette()
+        else:
+            self.hub()
         self.teruggaan = (input("wil je verder spelen? "))
         if self.teruggaan == "N":
             self.hub()
@@ -188,6 +239,5 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
 #start game
 speler1.hub()
-
 
 
