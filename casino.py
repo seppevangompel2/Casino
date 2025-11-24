@@ -81,8 +81,8 @@ def play_blackjack(chips=100):
             print(f"\n{player}, Score: {player.score()}")
             print(f"Dealer toont: {dealer.cards[0]}")
 
-            choice = input('Wil je nog een kaart? (j/n): ').lower()
-            if choice == 'j':
+            choice = input('Wil je nog een kaart? (y/n): ').lower()
+            if choice == 'y':
                 player.add_card(deck.pop())
                 if player.score() > 21:
                     print(f"\n{player}, Score: {player.score()}")
@@ -124,8 +124,8 @@ def play_blackjack(chips=100):
         print(f"\nJe hebt nu {chips:.0f} chips.")
 
         # Vraag of de speler nog een keer wil spelen
-        play_again = input("\nWil je nog een keer spelen? (j/n): ").lower()
-        if play_again != 'j':
+        play_again = input("\nWil je nog een keer spelen? (y/n): ").lower()
+        if play_again != 'y':
             print("Bedankt voor het spelen!")
             break
 
