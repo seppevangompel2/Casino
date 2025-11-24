@@ -7,6 +7,7 @@ N: nee
 Y: ja
 E: exit
 
+Uniforme structuur afgesproken zoals onder menu voorbeeld:
 Menu voorbeeld:
 
 Welke game wil je spelen?
@@ -51,6 +52,14 @@ De slotmachine werkt en ik heb het toegevoegd aan de main branch het werkt met d
 
 
 Paardenrace:
+•	12 paarden, allemaal met gelijke kans om te winnen
+•	Je zet een totaalbedrag in (mag niet meer zijn dan wat je hebt)
+•	Bij verlies krijg je niets terug
+•	Je mag op meerdere paarden inzetten, hoe meer paarden je kiest, hoe kleiner je uitbetaling
+•	Als één van jouw gekozen paarden wint, krijg je 12 / x keer je inzet, waarbij x het aantal paarden is waarop je hebt ingezet
+•	Voorbeeld: 10 credits inzetten op 3 paarden → 12/3 = 4 → je krijgt 40 credits als een van die 3 wint
+•	Uitbetalingen worden afgerond op gehele credits
+•	Per race is er precies één winnaar
 
 
 Hogerlager:
