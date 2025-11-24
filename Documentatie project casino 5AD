@@ -57,6 +57,23 @@ Hogerlager:
 
 
 Roulette:
+software casino stappen roulette:
+Class: Roulette
 
+Attributen: getal, kleur, kolom
+
+Methods: the roulette (random getal) , check_forwin (checken of je hebt gewonnen)
+Subclasses: Gamekolom1, Gamekolom2, Gamekolom3
+Attributen: super
+Methods: print_info
+Instanties: alle getallen 1-36 met kleur en kolom
+De code voor roulette te laten werken.
+
+code roulette textueel:
+Eerst maak ik de klasse Roulette, dan maak ik daar de nodige attributen, methods en instanties nog niet. 
+Daarna maak ik de subklasses Gamekolom1, 2 en 3. Daar maak ik de methods en attributen. 
+Dan maak ik wel de instanties aan de hand van de subklasses. Dan maak ik de code voor dat het spel roulette wel wertk. 
+Die code bevat de berekeningen, input, print, if en else statements, for … in …, …
+In de lobby maak ik in de klasse Speler nog een method save changes en load changes.
 
 Black Jack:
