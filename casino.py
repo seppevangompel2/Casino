@@ -134,8 +134,9 @@ class Hoger_Lager:
         self.kaart = kaart
         self.kaart2=kaart2
     def start_game(self,player):
+        print("credits:", player.credits)
         self.inzet=int(input("wat is jouw inzet? "))
-        if self.inzet >= player.credits:
+        if self.inzet > player.credits:
             print("je hebt niet zoveel geld.")
             self.start_game(player)
         player.credits -=self.inzet
@@ -187,5 +188,6 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
 #start game
 speler1.hub()
+
 
 
