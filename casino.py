@@ -1,11 +1,11 @@
-class Speler:import random
+import random
 class Speler:
     def __init__(self,spel,teruggaan, credits = 500):
         self.credits = credits
         self.spel = spel
         self.teruggaan = teruggaan
     def hub(self):
-        print("credits", self.credits)
+        print("Credits:", self.credits)
         self.teruggaan = "nee"
         self.spel=0
         print("Welke game wil je spelen?")
@@ -191,9 +191,12 @@ class Hoger_Lager:
         self.kaart2=kaart2
     def start_game(self,player):
         print("credits:", player.credits)
+        print("----------------------------------------")
         self.inzet=int(input("wat is jouw inzet? "))
+        print("----------------------------------------")
         if self.inzet > player.credits:
             print("je hebt niet zoveel geld.")
+            print("----------------------------------------")
             self.start_game(player)
         player.credits -=self.inzet
         self.randomizer()
@@ -203,23 +206,28 @@ class Hoger_Lager:
         print("L: lager")
         print("----------------------------------------")
         self.keuze = input("input ")
+        print("----------------------------------------")
         self.randomizer2()
         if self.keuze == "L":
             if self.kaart2 <= self.kaart:
                 player.credits += self.inzet*2
                 print("je verdient ", self.inzet, "credits")
+                print("----------------------------------------")
         if self.keuze == "H":
             if self.kaart2 >= self.kaart:
                 player.credits += self.inzet*2
                 print("je verdient ", self.inzet, "credits")
+                print("----------------------------------------")
     def randomizer2(self):
         kaartnummers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         self.kaart2 = random.choice(kaartnummers)
-        print("getrokken kaart:",self.kaart2)
+        print("tweede kaart:",self.kaart2)
+        print("----------------------------------------")
     def randomizer(self):
         kaartnummers = [1,2,3,4,5,6,7,8,9,10,11,12,13]
         self.kaart = random.choice(kaartnummers)
-        print("tweede kaart:",self.kaart)
+        print("getrokken kaart:",self.kaart)
+        print("----------------------------------------")
 class Paardenrace:
     def __init__(self):
         self.winnende_paard = None
@@ -249,7 +257,6 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
 #start game
 speler1.hub()
-
 
 
 
