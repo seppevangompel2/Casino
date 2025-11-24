@@ -55,7 +55,7 @@ class Speler:
         elif self.teruggaan == "Y":
             self.roulette()
     def black_jack(self):
-        #jouw code
+        #jouw code info from geeksforgeeks.org
         import random
 
         class Card:
