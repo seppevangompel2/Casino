@@ -19,7 +19,7 @@ class Speler:
         self.spel=(int(input("input: ")))
         while (self.spel != 1) and (self.spel != 2) and (self.spel != 3) and (self.spel != 4) and (self.spel != 5):
             print("geen mogelijke input, probeer opnieuw.")
-            self.spel = (int(input("input: ")))
+            self.spel = (int(input("Spel: ")))
         if self.spel == 1:
             self.slotmachine()
         elif self.spel==2:
@@ -76,9 +76,15 @@ class Speler:
         print("----------------------------------------")
         inputs = input("Paarden: ").split()
         gekozen_paarden = [int(x) for x in inputs]
-        inzet = int(input("hoeveel wil je inzetten?"))
+        print("Hoeveel wil je inzetten?")
+        inzet = int(input("Inzet:"))
         race1.run_race(gekozen_paarden, inzet, self)
-        self.teruggaan = input("wil je verder spelen? ")
+        print("Wil je verder spelen?")
+        print("----------------------------------------")
+        print("Y: ja")
+        print("N: nee")
+        print("----------------------------------------")
+        self.teruggaan = (input("Antwoord: "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
