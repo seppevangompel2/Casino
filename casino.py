@@ -78,6 +78,9 @@ class Hoger_Lager:
         self.kaart2=kaart2
     def start_game(self,player):
         self.inzet=int(input("wat is jouw inzet? "))
+        if self.inzet >= player.credits:
+            print("je hebt niet zoveel geld.")
+            self.start_game(player)
         player.credits -=self.inzet
         self.randomizer()
         self.keuze = input("kies hoger (H) of lager (L). ")
@@ -127,7 +130,5 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
 #start game
 speler1.hub()
-
-
 
 
