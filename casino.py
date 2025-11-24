@@ -192,7 +192,12 @@ class Hoger_Lager:
             self.start_game(player)
         player.credits -=self.inzet
         self.randomizer()
-        self.keuze = input("kies hoger (H) of lager (L). ")
+        print("kies hoger of lager.")
+        print("----------------------------------------")
+        print("H: hoger")
+        print("L: lager")
+        print("----------------------------------------")
+        self.keuze = input("input ")
         self.randomizer2()
         if self.keuze == "L":
             if self.kaart2 <= self.kaart:
@@ -205,11 +210,11 @@ class Hoger_Lager:
     def randomizer2(self):
         kaartnummers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         self.kaart2 = random.choice(kaartnummers)
-        print(self.kaart2)
+        print("getrokken kaart:",self.kaart2)
     def randomizer(self):
         kaartnummers = [1,2,3,4,5,6,7,8,9,10,11,12,13]
         self.kaart = random.choice(kaartnummers)
-        print (self.kaart)
+        print("tweede kaart:",self.kaart)
 class Paardenrace:
     def __init__(self):
         self.winnende_paard = None
@@ -239,5 +244,6 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
 #start game
 speler1.hub()
+
 
 
