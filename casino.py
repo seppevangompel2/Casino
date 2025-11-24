@@ -18,7 +18,7 @@ class Speler:
         print("----------------------------------------")
         self.spel=(int(input("input: ")))
         while (self.spel != 1) and (self.spel != 2)and (self.spel != 3)and (self.spel != 4)and (self.spel != 5):
-            print("no possible input, try again.")
+            print("geen mogelijke input, probeer opnieuw.")
             self.spel = (int(input("input: ")))
         if self.spel == 1:
             self.slotmachine()
@@ -102,6 +102,7 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 
 #start game
 speler1.hub()
+
 
 
 
