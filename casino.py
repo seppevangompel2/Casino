@@ -58,11 +58,16 @@ class Speler:
     def hoger_lager(self):
         #jouw code
         Hoger_Lager.start_game(self)
-        self.teruggaan = (input("wil je verder spelen? "))
+        print("Wil je verder spelen?")
+        print("----------------------------------------")
+        print("Y: ja")
+        print("N: nee")
+        print("----------------------------------------")
+        self.teruggaan = (input("Antwoord: "))
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.hoger_lager()
+            self.slotmachine()
     def paardenrace(self):
         print("typ uw paardnummers waarop je credits wilt zetten")
         inputs = input().split()
@@ -244,6 +249,7 @@ Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
 #start game
 speler1.hub()
+
 
 
 
