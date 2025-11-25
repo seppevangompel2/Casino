@@ -67,7 +67,7 @@ class Speler:
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
-            self.slotmachine()
+            self.hoger_lager()
     def paardenrace(self):
         print("Op welke paarden?")
         print("----------------------------------------")
@@ -392,6 +392,7 @@ race1 = Paardenrace()
 
 #start game
 speler1.hub()
+
 
 
 
