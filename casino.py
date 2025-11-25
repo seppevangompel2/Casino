@@ -147,13 +147,86 @@ class Speler:
             self.hub()
         elif self.teruggaan == "Y":
             self.roulette()
+
     def black_jack(self):
-        #jouw code
-        self.teruggaan = (input("wil je verder spelen? "))
+        print("----------------------------------------")
+        print("Black Jack")
+        print("----------------------------------------")
+        print(f"Je hebt {self.credits} credits.")
+
+        # Plaats een inzet
+        while True:
+            try:
+                bet = int(input("Plaats je inzet: "))
+                if bet <= 0 or bet > self.credits:
+                    print(f"Ongeldige inzet. Je hebt {self.credits} credits.")
+                else:
+                    break
+            except ValueError:
+                print("Voer een geldig getal in.")
+
+        # Initialiseer het spel
+        deck = Deck()
+        player = Player("Speler")
+        dealer = Player("Dealer")
+
+        # Geef begin kaarten
+        player.add_card(deck.pop())
+        player.add_card(deck.pop())
+        dealer.add_card(deck.pop())
+        dealer.add_card(deck.pop())
+
+        # Beurt van de speler
+        while True:
+            print(f"\n{player}, Score: {player.score()}")
+            print(f"Dealer toont: {dealer.cards[0]}")
+            choice = input('Wil je nog een kaart? (Y/N): ').lower()
+            if choice == 'y':
+                player.add_card(deck.pop())
+                if player.score() > 21:
+                    print(f"\n{player}, Score: {player.score()}")
+                    print("Speler heeft verloren! Dealer wint.")
+                    self.credits -= bet
+                    break
+            elif choice == 'n':
+                break
+            else:
+                print("Ongeldige keuze. Probeer opnieuw.")
+
+        # Beurt van de dealer
+        if player.score() <= 21:
+            print(f"\nDealer toont: {dealer}, Score: {dealer.score()}")
+            while dealer.score() < 17:
+                dealer.add_card(deck.pop())
+                print(f"Dealer trekt: {dealer.cards[-1]}, Score: {dealer.score()}")
+
+            # Bepaal de winnaar
+            player_score = player.score()
+            dealer_score = dealer.score()
+            print(f"\n{player}, Score: {player_score}")
+            print(f"{dealer}, Score: {dealer_score}")
+
+            if dealer_score > 21:
+                print("Dealer heeft verloren! Speler wint.")
+                self.credits += bet
+            elif player_score > dealer_score:
+                print("Speler wint!")
+                self.credits += bet
+            elif dealer_score > player_score:
+                print("Dealer wint!")
+                self.credits -= bet
+            else:
+                print("Gelijkspel.")
+
+        print(f"\nJe hebt nu {self.credits} credits.")
+
+        self.teruggaan = input("Wil je verder spelen? (Y/N): ").upper()
         if self.teruggaan == "N":
             self.hub()
         elif self.teruggaan == "Y":
             self.black_jack()
+
+
 #eventuele andere klassen
 class Slotmachine:
     def __init__(self, credits):
@@ -265,13 +338,60 @@ class Paardenrace:
         print("Credits:", speler.credits)
         print("----------------------------------------")
 
+class Card:
+    def __init__(self, card, category):
+        self.card = card
+        self.category = category
+
+    def value(self):
+        if self.card in ['Boer', 'Vrouw', 'Heer']:
+            return 10
+        elif self.card == 'Aas':
+            return 11
+        else:
+            return int(self.card)
+
+    def __repr__(self):
+        return f"{self.card} {self.category}"
+
+class Deck:
+    card_categories = ['Harten', 'Ruiten', 'Klaveren', 'Schoppen']
+    cards_list = ['Aas', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Boer', 'Vrouw', 'Heer']
+
+    def __init__(self):
+        self.cards = [Card(card, category) for category in self.card_categories for card in self.cards_list]
+        random.shuffle(self.cards)
+
+    def pop(self):
+        return self.cards.pop()
+
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.cards = []
+
+    def add_card(self, card):
+        self.cards.append(card)
+
+    def score(self):
+        total = sum(card.value() for card in self.cards)
+        aces = sum(1 for card in self.cards if card.card == 'Aas')
+        while total > 21 and aces:
+            total -= 10
+            aces -= 1
+        return total
+
+    def __repr__(self):
+        return f"{self.name}: {', '.join(str(card) for card in self.cards)}"
+
 #eventuele instanties
 speler1=Speler(0,"N")
 Hoger_Lager=Hoger_Lager(0,0,0)
 race1 = Paardenrace()
+
+
 #start game
 speler1.hub()
-
 
 
 
